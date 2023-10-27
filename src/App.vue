@@ -21,6 +21,12 @@ provide('user', store.state.user)
 
 <template>
   <div>
+
+    <router-link to="/">Home</router-link> |
+    <router-link to="/conversation">Conversation</router-link>
+
+    <router-view></router-view>
+  
     <BaseLayout>
       <HomePage :user="user" />
       <BaseButton dangerValue="danger"/>
