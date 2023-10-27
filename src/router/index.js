@@ -24,6 +24,20 @@ const routes = [
             }
         },
     },
+    {
+        path: "/conversation/:id",
+        name: "Conversation",
+        component: ConversationPage,
+        beforeEnter: (to, from, next) => {
+            const { user } = store.state;
+            if (!user) {
+                console.log("No user, redirecting to Home");
+                next({ name: "Home" });
+            } else {
+                next();
+            }
+        },
+    }
 ];
 
 const router = createRouter({
