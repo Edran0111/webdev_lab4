@@ -5,7 +5,9 @@ import BaseButton from './components/BaseButton.vue'
 import AsyncButton from './components/AsyncButton.vue'
 import signInButton from './components/signInButton.vue'
 import { ref, provide } from 'vue'
+import { useStore } from 'vuex'
 
+const store  = useStore();
 const user = ref(null);
 
 provide('user', user);
@@ -13,6 +15,7 @@ const updateUser = (newUser) => {
   user.value = newUser;
 };
 
+provide('user', store.state.user)
 
 </script>
 

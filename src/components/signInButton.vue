@@ -7,6 +7,7 @@
 <script>
 import { signInAndGetUser } from '../lib/microsoftGraph';
 import { inject } from 'vue';
+import { useStore } from 'vuex';
 
 export default{
     name: 'SignInButton',
@@ -17,11 +18,13 @@ export default{
     },
     setup(){
         const user = inject('user');
+        const store = useStore();
 
         const handleClick = async () => {
             console.log('handleClick');
             const newUser = await signInAndGetUser();
             user.value = newUser;
+            store.commit('setUser', newUser);
             console.log(user);
         }
 
