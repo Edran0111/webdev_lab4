@@ -3,6 +3,15 @@ import HomePage from './pages/HomePage.vue'
 import BaseLayout from './components/BaseLayout.vue'
 import BaseButton from './components/BaseButton.vue'
 import AsyncButton from './components/AsyncButton.vue'
+import signInButton from './components/signInButton.vue'
+import { ref, provide } from 'vue'
+
+const user = ref(null);
+
+provide('user', user);
+const updateUser = (newUser) => {
+  user.value = newUser;
+};
 
 
 </script>
@@ -10,13 +19,17 @@ import AsyncButton from './components/AsyncButton.vue'
 <template>
   <div>
     <BaseLayout>
-      <HomePage />
+      <HomePage :user="user" />
       <BaseButton dangerValue="danger"/>
-      <AsyncButton/>
+      <signInButton :user="user" @userChanged="updateUser"/>
+      <AsyncButton />
      
     </BaseLayout>
   </div>
 </template>
+
+
+
 
 <style scoped>
 </style>

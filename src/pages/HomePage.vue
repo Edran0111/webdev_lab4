@@ -1,12 +1,20 @@
 <template>
     <div>
-        this is the HomePage page component
+        <div v-if="user">
+            <p>User : {{user}}</p>
+        </div>
     </div>
 </template>
 
 <script>
+import {ref, inject} from 'vue'
+
 export default {
     name: 'HomePage',
+    setup() {
+        const user = inject('user');
+        return {user};
+    },
     data() {
         return {
             // Your data goes here
