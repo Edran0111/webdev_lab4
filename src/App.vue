@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage.vue'
 import BaseLayout from './components/BaseLayout.vue'
 import BaseButton from './components/BaseButton.vue'
 import AsyncButton from './components/AsyncButton.vue'
-import {signInAndGetUser} from './lib/microsoftGraph.js'
+
 
 </script>
 
@@ -12,8 +12,8 @@ import {signInAndGetUser} from './lib/microsoftGraph.js'
     <BaseLayout>
       <HomePage />
       <BaseButton dangerValue="danger"/>
-      <AsyncButton />
-      <button @click="signInAndGetUser">Login</button>
+      <AsyncButton/>
+     
     </BaseLayout>
   </div>
 </template>

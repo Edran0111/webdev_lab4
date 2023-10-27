@@ -1,7 +1,6 @@
 // file src/lib/microsoftGraph.js
 import * as msal from '@azure/msal-browser'
 
-
 const requestedScopes = {
   scopes: ["User.Read"]
 }
@@ -9,7 +8,7 @@ const requestedScopes = {
 
 const msalInstance = new msal.PublicClientApplication({
   auth: {
-    clientId: process.env.VUE_APP_OAUTH_CLIENT_ID,
+    clientId: import.meta.env.VUE_APP_OAUTH_CLIENT_ID,
   },
   cache: {
     cacheLocation: "sessionStorage",
@@ -17,7 +16,7 @@ const msalInstance = new msal.PublicClientApplication({
 })
 
 export async function signInAndGetUser () {
-  console.log(process.env.VUE_APP_OAUTH_CLIENT_ID)
+  
   const authResult = await msalInstance.loginPopup(requestedScopes)
   msalInstance.setActiveAccount(authResult.account)
   return authResult.account
